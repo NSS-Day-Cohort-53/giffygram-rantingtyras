@@ -5,7 +5,9 @@ import {
     fetchMessages,
     fetchPosts,
     fetchUsers,
+    postUser
 } from "./data/provider.js";
+import { registerNewUser } from "./auth/Register.js";
 
 const applicationElement = document.querySelector(".giffygram");
 
@@ -28,3 +30,36 @@ renderApp();
 applicationElement.addEventListener("stateChanged", event => {
     renderApp();
   })
+
+
+  //this listens for clicks for registering new users
+  addEventListener("click", (event)=> {
+    if (event.target.id === "registerButton")
+    {
+        document.querySelector(".giffygram").innerHTML = registerNewUser();
+    }
+
+    if  (event.target.id === "createNewAcctBtn")
+    {
+        const email = document.querySelector("#regEmail").value;
+        const password = document.querySelector("#regPass").value;
+        const name = document.querySelector("#regName").value;
+
+        if (email.length >0 && password.length >0 && name.length > 0)
+        {
+
+        const newUser = {
+            name: name,
+            email: email,
+            password: password
+            }
+
+            postUser(newUser)
+
+            document.querySelector(".giffygram").innerHTML = LoginForm();
+        }
+        else {
+            window.alert("please fill in all fields");
+        }
+    }
+})
