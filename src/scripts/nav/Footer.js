@@ -28,7 +28,10 @@ export const Footer = () => {
     })
 
     // calculate total number of posts form yearsPostCountObj
-    const totalPosts = Object.values(yearsPostCountObj).reduce((a, b) => a + b)
+    let totalPosts = 0
+    if (Object.keys(yearsPostCountObj).length !== 0) {
+        totalPosts = Object.values(yearsPostCountObj).reduce((a, b) => a + b)
+    }
 
     // make array from yearsSet for easy sorting and mapping
     const yearsArray = Array.from(yearsSet);
