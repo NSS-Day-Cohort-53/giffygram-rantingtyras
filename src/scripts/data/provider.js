@@ -98,3 +98,8 @@ export const setDisplayMessages = (bool) => applicationState.displayMessages = b
 
 
 
+
+
+export const deletePost = (postId) => {
+    return fetch(`${spi}/posts/${postId}`, {method: "DELETE"})
+}
