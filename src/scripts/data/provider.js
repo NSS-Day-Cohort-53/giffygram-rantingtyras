@@ -89,3 +89,12 @@ export const setCurrentUser = (foundUser) => {
 export const postUser = (userObj) => {
     return fetch(`${apiURL}/users`, setOptions(userObj) )
 }
+
+//feed setters
+export const setFeedChosenUser = (userId) => applicationState.feed.chosenUser = userId;
+export const setDisplayFavorites = (bool) => applicationState.displayFavorites = bool;
+export const setDisplayMessages = (bool) => applicationState.displayMessages = bool;
+
+
+
+
