@@ -29,7 +29,7 @@ export const getLikes = () =>
 export const getMessages = () =>
     applicationState.messages.map((message) => ({ ...message }));
 
-export const getFeed = () => (applicationState.feed = { ...feed });
+export const getFeed = () => ({...applicationState.feed });
 
 export const getCurrentUser = () => {
     return applicationState.currentUser;
@@ -92,8 +92,8 @@ export const postUser = (userObj) => {
 
 //feed setters
 export const setFeedChosenUser = (userId) => applicationState.feed.chosenUser = userId;
-export const setDisplayFavorites = (bool) => applicationState.displayFavorites = bool;
-export const setDisplayMessages = (bool) => applicationState.displayMessages = bool;
+export const toggleFeedDisplayFavorites = () => applicationState.displayFavorites = !applicationState.displayFavorites;
+export const setFeedDisplayMessages = (bool) => applicationState.displayMessages = bool;
 
 
 
