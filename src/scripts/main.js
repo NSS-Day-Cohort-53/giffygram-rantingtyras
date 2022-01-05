@@ -5,7 +5,9 @@ import {
     fetchMessages,
     fetchPosts,
     fetchUsers,
-    postUser
+    getUsers,
+    postUser,
+    setCurrentUser
 } from "./data/provider.js";
 import { registerNewUser } from "./auth/Register.js";
 
@@ -17,6 +19,8 @@ export const renderApp = () => {
             const user = parseInt(localStorage.getItem("gg_user"));
 
             if (user) {
+                const users = getUsers();
+                setCurrentUser(users.find(userObj => userObj.id === user));
                 applicationElement.innerHTML = GiffyGram();
             } else {
                 applicationElement.innerHTML = LoginForm();
