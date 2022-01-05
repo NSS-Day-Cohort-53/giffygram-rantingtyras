@@ -1,3 +1,5 @@
+import { gifSubmission } from "./feed/postForm.js"
+import { msgSubmission } from "./message/MessageForm.js"
 import { Navbar } from "./nav/Navbar.js"
 
 export const GiffyGram = () => {
@@ -6,6 +8,12 @@ export const GiffyGram = () => {
     return `
         <header>
             ${Navbar()}
+            <br>
+            <br>
+            <br>
+            ${msgSubmission()}
+            <br>
+            ${gifSubmission()}
         </header>
     `
 }

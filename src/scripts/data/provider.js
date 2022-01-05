@@ -23,16 +23,17 @@ const setOptions = (arg)=> ({
 export const getUsers = () =>
     applicationState.users.map((user) => ({ ...user }));
 export const getPosts = () =>
-    applicationState.users.map((user) => ({ ...user }));
+    applicationState.posts.map((post) => ({ ...post }));
 export const getLikes = () =>
-    applicationState.users.map((user) => ({ ...user }));
+    applicationState.likes.map((like) => ({ ...like }));
 export const getMessages = () =>
-    applicationState.users.map((user) => ({ ...user }));
+    applicationState.messages.map((message) => ({ ...message }));
 
 export const getFeed = () => (applicationState.feed = { ...feed });
 
-export const getCurrentUser = () =>
-    (applicationState.currentUser = { ...currentUser });
+export const getCurrentUser = () => {
+    return applicationState.currentUser;
+}
 
 export const fetchUsers = () => {
     return fetch(`${apiURL}/users`)
@@ -65,6 +66,25 @@ export const fetchMessages = () => {
             applicationState.messages = messages;
         });
 };
+
+export const sendMsg = (msg) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(msg)
+    }
+    return fetch("http://localhost:8088/messages", fetchOptions)
+    .then(response => response.json())
+    .then(() => {
+        applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+    })
+}
+
+export const setCurrentUser = (foundUser) => {
+    applicationState.currentUser = foundUser
+}
 
 export const postUser = (userObj) => {
     return fetch(`${apiURL}/users`, setOptions(userObj) )
