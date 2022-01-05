@@ -107,8 +107,8 @@ export const postUser = (userObj) => {
 
 //feed setters
 export const setFeedChosenUser = (userId) => applicationState.feed.chosenUser = userId;
-export const toggleFeedDisplayFavorites = () => applicationState.displayFavorites = !applicationState.displayFavorites;
-export const setFeedDisplayMessages = (bool) => applicationState.displayMessages = bool;
+export const toggleFeedDisplayFavorites = () => applicationState.feed.displayFavorites = !applicationState.feed.displayFavorites;
+export const setFeedDisplayMessages = (bool) => applicationState.feed.displayMessages = bool;
 
 
 
