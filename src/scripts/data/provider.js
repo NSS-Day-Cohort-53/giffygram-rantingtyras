@@ -14,6 +14,12 @@ const applicationState = {
     },
 };
 
+const setOptions = (arg)=> ({
+    method: "POST",
+    headers: {"Content-Type": 'application/json'},
+    body: JSON.stringify(arg)
+})
+
 export const getUsers = () =>
     applicationState.users.map((user) => ({ ...user }));
 export const getPosts = () =>
@@ -78,4 +84,8 @@ export const sendMsg = (msg) => {
 
 export const setCurrentUser = (foundUser) => {
     applicationState.currentUser = foundUser
+}
+
+export const postUser = (userObj) => {
+    return fetch(`${apiURL}/users`, setOptions(userObj) )
 }
