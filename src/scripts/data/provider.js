@@ -128,7 +128,7 @@ export const toggleFeedDisplayFavorites = () => applicationState.feed.displayFav
 export const setFeedDisplayMessages = (bool) => applicationState.feed.displayMessages = bool;
 
 export const deletePost = (postId) => {
-    return fetch(`${spi}/posts/${postId}`, {method: "DELETE"})
+    return fetch(`${apiURL}/posts/${postId}`, {method: "DELETE"})
 }
 
 export const deleteFav = (id) => {
