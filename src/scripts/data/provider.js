@@ -118,5 +118,5 @@ export const setFeedDisplayMessages = (bool) => applicationState.feed.displayMes
 
 
 export const deletePost = (postId) => {
-    return fetch(`${spi}/posts/${postId}`, {method: "DELETE"})
+    return fetch(`${apiURL}/posts/${postId}`, {method: "DELETE"})
 }
