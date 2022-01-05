@@ -43,6 +43,6 @@ document.addEventListener("click", (event)=> {
     {
         let postId =event.target.id.substr(19);
         deletePost(postId)
-        document.dispatchEvent(new CustomEvent("stateChanged"))
+        applicationState.dispatchEvent(new CustomEvent("stateChanged"))
     }
 })
