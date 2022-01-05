@@ -1,4 +1,4 @@
-import { getUsers } from "../data/provider.js"
+import { getUsers, setCurrentUser } from "../data/provider.js"
 
 
 document.addEventListener("click", clickEvent => {
@@ -12,6 +12,7 @@ document.addEventListener("click", clickEvent => {
         for (const user of userState) {
             if (user.email === email && user.password === password) {
                 foundUser = user
+                setCurrentUser(foundUser)
             }
         }
 
