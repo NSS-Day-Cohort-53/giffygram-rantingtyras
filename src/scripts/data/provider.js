@@ -9,6 +9,7 @@ const applicationState = {
     currentUser: {},
     feed: {
         chosenUser: null,
+        chosenYear: null,
         displayFavorites: false,
         displayMessages: false,
     },
@@ -29,7 +30,7 @@ export const getLikes = () =>
 export const getMessages = () =>
     applicationState.messages.map((message) => ({ ...message }));
 
-export const getFeed = () => (applicationState.feed = { ...feed });
+export const getFeed = () => ({...applicationState.feed });
 
 export const getCurrentUser = () => {
     return applicationState.currentUser;
@@ -104,6 +105,17 @@ export const setCurrentUser = (foundUser) => {
 export const postUser = (userObj) => {
     return fetch(`${apiURL}/users`, setOptions(userObj) )
 }
+
+//feed setters
+export const setFeedChosenUser = (userId) => applicationState.feed.chosenUser = userId;
+export const setFeedChosenYear = (year) => applicationState.feed.chosenYear = year;
+export const toggleFeedDisplayFavorites = () => applicationState.feed.displayFavorites = !applicationState.feed.displayFavorites;
+export const setFeedDisplayMessages = (bool) => applicationState.feed.displayMessages = bool;
+
+
+
+
+
 
 export const deletePost = (postId) => {
     return fetch(`${spi}/posts/${postId}`, {method: "DELETE"})

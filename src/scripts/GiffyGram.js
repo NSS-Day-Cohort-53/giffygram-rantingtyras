@@ -1,3 +1,4 @@
+import { Footer } from "./nav/Footer.js"
 import { gifSubmission } from "./feed/postForm.js"
 import { msgSubmission } from "./message/MessageForm.js"
 import { Navbar } from "./nav/Navbar.js"
@@ -18,5 +19,6 @@ export const GiffyGram = () => {
             <br>
             ${postFeed()}
         </header>
+        ${Footer()}
     `
 }
