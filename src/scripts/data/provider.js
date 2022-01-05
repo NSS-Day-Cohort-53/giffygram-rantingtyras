@@ -98,6 +98,21 @@ export const sendPost = (post) => {
     })
 }
 
+export const sendFav = (like) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(like)
+    }
+    return fetch("http://localhost:8088/likes", fetchOptions)
+    .then(response => response.json())
+    .then(() => {
+        applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+    })
+}
+
 export const setCurrentUser = (foundUser) => {
     applicationState.currentUser = foundUser
 }
@@ -112,11 +127,15 @@ export const setFeedChosenYear = (year) => applicationState.feed.chosenYear = ye
 export const toggleFeedDisplayFavorites = () => applicationState.feed.displayFavorites = !applicationState.feed.displayFavorites;
 export const setFeedDisplayMessages = (bool) => applicationState.feed.displayMessages = bool;
 
-
-
-
-
-
 export const deletePost = (postId) => {
     return fetch(`${spi}/posts/${postId}`, {method: "DELETE"})
 }
+
+export const deleteFav = (id) => {
+    return fetch(`http://localhost:8088/likes/${id}`, {method: "DELETE"})
+    .then(
+        () => {
+            applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+        }
+        )
+    }
