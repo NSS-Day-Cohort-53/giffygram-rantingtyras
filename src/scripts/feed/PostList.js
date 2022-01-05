@@ -1,9 +1,11 @@
-import { getFeed, getPosts, getUsers } from "../data/provider.js";
+import { getCurrentUser, getFeed, getLikes, getPosts, getUsers } from "../data/provider.js";
 
 export const postFeed = () => {
     let posts = getPosts();
-    let users = getUsers();
+    const users = getUsers();
+    const likes = getLikes();
     const feed = getFeed();
+    const currentUser = getCurrentUser();
 
     // change posts array to include only those of the chosen year
     if (feed.chosenYear) {
@@ -18,8 +20,10 @@ export const postFeed = () => {
         posts = posts.filter(post => feed.chosenUser === post.userId)
     }
 
+    // change posts array to include only the currentUser's favorites
     if (feed.displayFavorites) {
-        
+        const currentUserLikes = likes.filter(like => like.userId === currentUser.id)
+        posts = posts.filter(post => currentUserLikes.find(like => like.postId === post.id))
     }
 
     let html = `<ul>`;
