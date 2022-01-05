@@ -54,9 +54,9 @@ applicationElement.addEventListener("stateChanged", event => {
             password: password
             }
 
-            postUser(newUser)
+            postUser(newUser).then(()=>renderApp())
 
-            renderApp();
+            
         }
         else {
             window.alert("please fill in all fields");
