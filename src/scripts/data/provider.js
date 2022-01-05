@@ -9,6 +9,7 @@ const applicationState = {
     currentUser: {},
     feed: {
         chosenUser: null,
+        chosenYear: null,
         displayFavorites: false,
         displayMessages: false,
     },
@@ -107,6 +108,7 @@ export const postUser = (userObj) => {
 
 //feed setters
 export const setFeedChosenUser = (userId) => applicationState.feed.chosenUser = userId;
+export const setFeedChosenYear = (year) => applicationState.feed.chosenYear = year;
 export const toggleFeedDisplayFavorites = () => applicationState.feed.displayFavorites = !applicationState.feed.displayFavorites;
 export const setFeedDisplayMessages = (bool) => applicationState.feed.displayMessages = bool;
 
