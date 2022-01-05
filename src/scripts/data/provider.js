@@ -69,3 +69,7 @@ export const fetchMessages = () => {
 export const postUser = (userObj) => {
     return fetch(`${apiURL}/users`, setOptions(userObj) )
 }
+
+export const deletePost = (postId) => {
+    return fetch(`${spi}/posts/${postId}`, {method: "DELETE"})
+}
