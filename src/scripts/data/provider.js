@@ -82,6 +82,21 @@ export const sendMsg = (msg) => {
     })
 }
 
+export const sendPost = (post) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(post)
+    }
+    return fetch("http://localhost:8088/posts", fetchOptions)
+    .then(response => response.json())
+    .then(() => {
+        applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+    })
+}
+
 export const setCurrentUser = (foundUser) => {
     applicationState.currentUser = foundUser
 }
