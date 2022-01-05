@@ -17,16 +17,17 @@ const applicationState = {
 export const getUsers = () =>
     applicationState.users.map((user) => ({ ...user }));
 export const getPosts = () =>
-    applicationState.users.map((user) => ({ ...user }));
+    applicationState.posts.map((post) => ({ ...post }));
 export const getLikes = () =>
-    applicationState.users.map((user) => ({ ...user }));
+    applicationState.likes.map((like) => ({ ...like }));
 export const getMessages = () =>
-    applicationState.users.map((user) => ({ ...user }));
+    applicationState.messages.map((message) => ({ ...message }));
 
 export const getFeed = () => (applicationState.feed = { ...feed });
 
-export const getCurrentUser = () =>
-    (applicationState.currentUser = { ...currentUser });
+export const getCurrentUser = () => {
+    return applicationState.currentUser;
+}
 
 export const fetchUsers = () => {
     return fetch(`${apiURL}/users`)
@@ -73,4 +74,8 @@ export const sendMsg = (msg) => {
     .then(() => {
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
     })
+}
+
+export const setCurrentUser = (foundUser) => {
+    applicationState.currentUser = foundUser
 }

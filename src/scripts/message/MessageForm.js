@@ -1,5 +1,5 @@
 import { getUsers } from "../data/provider.js"
-import { sendMsg } from "../data/provider.js"
+import { sendMsg, getCurrentUser } from "../data/provider.js"
 //still needs functionality but form should be created
 
 export const msgSubmission = () => {
@@ -35,7 +35,8 @@ document.addEventListener("click", clickEvent => {
         const recipientId = foundRecipient.id
         const read = false
         const text = document.querySelector("input[name='msg']").value
-        const userId = 
+        const user = getCurrentUser()
+        const userId = user.id
 
         const dataToSendToApi = {
             recipientId: recipientId,

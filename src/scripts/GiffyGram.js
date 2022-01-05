@@ -8,6 +8,12 @@ export const GiffyGram = () => {
     return `
         <header>
             ${Navbar()}
+            <br>
+            <br>
+            <br>
+            ${msgSubmission()}
+            <br>
+            ${gifSubmission()}
         </header>
     `
 }
