@@ -2,6 +2,10 @@ const apiURL = "http://localhost:8088";
 const applicationElement = document.querySelector(".giffygram");
 
 const applicationState = {
+    users: [],
+    posts: [],
+    likes: [],
+    messages: [],
     currentUser: {},
     feed: {
         chosenUser: null,
@@ -25,7 +29,7 @@ export const getCurrentUser = () =>
     (applicationState.currentUser = { ...currentUser });
 
 export const fetchUsers = () => {
-    return fetch(`${API}/users`)
+    return fetch(`${apiURL}/users`)
         .then((response) => response.json())
         .then((users) => {
             applicationState.users = users;
@@ -33,7 +37,7 @@ export const fetchUsers = () => {
 };
 
 export const fetchPosts = () => {
-    return fetch(`${API}/posts`)
+    return fetch(`${apiURL}/posts`)
         .then((response) => response.json())
         .then((posts) => {
             applicationState.posts = posts;
@@ -41,7 +45,7 @@ export const fetchPosts = () => {
 };
 
 export const fetchLikes = () => {
-    return fetch(`${API}/likes`)
+    return fetch(`${apiURL}/likes`)
         .then((response) => response.json())
         .then((likes) => {
             applicationState.likes = likes;
@@ -49,7 +53,7 @@ export const fetchLikes = () => {
 };
 
 export const fetchMessages = () => {
-    return fetch(`${API}/messages`)
+    return fetch(`${apiURL}/messages`)
         .then((response) => response.json())
         .then((messages) => {
             applicationState.messages = messages;
