@@ -59,3 +59,18 @@ export const fetchMessages = () => {
             applicationState.messages = messages;
         });
 };
+
+export const sendMsg = (msg) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(msg)
+    }
+    return fetch("http://localhost:8088/messages", fetchOptions)
+    .then(response => response.json())
+    .then(() => {
+        applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+    })
+}
