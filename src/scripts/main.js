@@ -56,7 +56,7 @@ applicationElement.addEventListener("stateChanged", event => {
 
             postUser(newUser)
 
-            document.querySelector(".giffygram").innerHTML = LoginForm();
+            renderApp();
         }
         else {
             window.alert("please fill in all fields");
