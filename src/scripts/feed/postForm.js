@@ -32,7 +32,7 @@ applicationElement.addEventListener("click", event => {
 document.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "submitGif") {
         const title = document.querySelector("input[name='title']").value
-        const description = document.querySelector("input[name='description']").value
+        const description = document.querySelector("textarea[name='description']").value
         const img = document.querySelector("input[name='url']").value
         const user = getCurrentUser()
         const userId = user.id
