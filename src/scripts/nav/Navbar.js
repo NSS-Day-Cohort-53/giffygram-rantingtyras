@@ -31,7 +31,8 @@ applicationElement.addEventListener("click", (event) => {
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
     } else if (event.target.id === "directMessageIcon") {
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
-    } else if (event.target.id === "notifiction") {
+    } else if (event.target.id === "notification") {
+        setFeedDisplayMessages(true);
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
     } else if (event.target.id === "logout") {
         localStorage.removeItem("gg_user");
