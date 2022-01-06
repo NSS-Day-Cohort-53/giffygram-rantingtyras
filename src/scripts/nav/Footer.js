@@ -6,6 +6,7 @@ import {
     setFeedChosenUser,
     getFeed,
     setFeedChosenYear,
+    getCurrentUser,
 } from "../data/provider.js";
 
 export const Footer = () => {
@@ -13,6 +14,7 @@ export const Footer = () => {
     let posts = getPosts();
     const feed = getFeed();
     const likes = getLikes();
+    const currentUser = getCurrentUser();
 
     // change posts array to include only those of the chosen user
     if (feed.chosenUser) {
