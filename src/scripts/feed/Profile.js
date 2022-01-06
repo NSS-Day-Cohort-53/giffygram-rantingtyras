@@ -45,6 +45,8 @@ export const profileFeed = () => {
     }
     
     const userPostList = posts.filter(post => post.userId === user.id)
+    userPostList.sort((a, b) => b.timestamp - a.timestamp);
+
     const postList = () => {
         let html = `<ul>`
 
