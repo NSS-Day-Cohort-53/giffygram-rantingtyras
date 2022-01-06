@@ -40,7 +40,7 @@ applicationElement.addEventListener("click", (event) => {
         setUserProfileId(null)
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
     } else if (event.target.id === "directMessageIcon") {
-        applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+        //applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
     } else if (event.target.id === "notification") {
         setFeedDisplayMessages(true);
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
