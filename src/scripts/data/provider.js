@@ -113,6 +113,19 @@ export const sendFav = (like) => {
     })
 }
 
+export const setMessageRead = (message) => {
+    message.read = true;
+    const fetchOptions = {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(message)
+	};
+
+	return fetch(`${apiURL}/messages/${message.id}`, fetchOptions);
+}
+
 export const setCurrentUser = (foundUser) => {
     applicationState.currentUser = foundUser
 }
@@ -127,6 +140,8 @@ export const setFeedChosenYear = (year) => applicationState.feed.chosenYear = ye
 export const toggleFeedDisplayFavorites = () => applicationState.feed.displayFavorites = !applicationState.feed.displayFavorites;
 export const setFeedDisplayFavorites = (bool) => applicationState.feed.displayFavorites = bool;
 export const setFeedDisplayMessages = (bool) => applicationState.feed.displayMessages = bool;
+
+
 
 export const deletePost = (postId) => {
     return fetch(`${apiURL}/posts/${postId}`, {method: "DELETE"})
