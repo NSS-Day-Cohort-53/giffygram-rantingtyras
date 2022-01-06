@@ -12,7 +12,8 @@ export const GiffyGram = () => {
             <br>
             <br>
             <br>
-            ${msgSubmission()}
+            <div id="msgForm">
+            </div>
             <br>
             ${gifSubmission()}
             <br>
