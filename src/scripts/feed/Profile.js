@@ -10,10 +10,19 @@ export const profileFeed = () => {
     const user = users.find(user => user.id === userId)
     const userPosts = posts.filter(post => post.userId === user.id)
     const numOfPosts = userPosts.length
-    const messageSentArr = messages.filter(message => (message.userId === currentUser.id) && (message.recipientId === user.id))
-    const messageRecArr = messages.filter(message => (message.userId === user.id) && (message.recipientId === currentUser.id))
-    const unorderedMessageArr = messageSentArr.concat(messageRecArr)
-    const messageArr = unorderedMessageArr.sort((a, b) => b.id - a.id);
+
+    const finalMessageArr = () => {
+        if (currentUser.id === user.id) {
+        const messageSentArr = messages.filter(message => (message.userId === currentUser.id) && (message.recipientId === user.id))
+        return messageSentArr
+    } else {
+        const messageRecArr = messages.filter(message => (message.userId === user.id) && (message.recipientId === currentUser.id))
+        const messageSentArr = messages.filter(message => (message.userId === currentUser.id) && (message.recipientId === user.id))
+        const unorderedMessageArr = messageSentArr.concat(messageRecArr)
+        return unorderedMessageArr
+    }}
+    
+    const messageArr = finalMessageArr().sort((a, b) => b.id - a.id);
 
     const messageList = () => {
         let html = `<ul>`
