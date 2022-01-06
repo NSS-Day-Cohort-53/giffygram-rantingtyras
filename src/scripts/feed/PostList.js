@@ -8,7 +8,10 @@ import {
   sendFav,
   deleteFav,
   deletePost,
+  setFeedDisplayProfile,
+  setUserProfileId
 } from "../data/provider.js";
+import { profileFeed } from "./Profile.js";
 
 let star;
 
@@ -53,7 +56,9 @@ export const postFeed = () => {
          <p>${post.title}</p>
          <p><img src="${post.imageUrl}" alt=""></p>
          <p>${post.description}</p>
-         <p>Post By: ${foundUser.name} at ${post.timestamp}</p>
+         <p>Post By: <div class="profileLink" name="profileName" id="${
+           foundUser.id
+         }">${foundUser.name}</div> at ${post.timestamp}</p>
          <img id="${post.id}" ${
         likes.find(
           (like) =>
@@ -73,7 +78,9 @@ export const postFeed = () => {
          <p>${post.title}</p>
          <p><img src="${post.imageUrl}" alt=""></p>
          <p>${post.description}</p>
-         <p>Post By: ${foundUser.name} at ${post.timestamp}</p>
+         <p>Post By: <div class="profileLink" id="${foundUser.id}">${
+        foundUser.name
+      }</div> at ${post.timestamp}</p>
          <img id="${post.id}" ${
         likes.find(
           (like) =>
@@ -127,5 +134,13 @@ document.addEventListener("click", (clickEvent) => {
       const unFaveId = unFavePost.id;
       deleteFav(unFaveId);
     }
+  }
+});
+
+document.addEventListener("click", (clickEvent) => {
+  if (clickEvent.target.className === "profileLink") {
+    setFeedDisplayProfile(true);
+    setUserProfileId(clickEvent.target.id)
+    renderApp();
   }
 });
