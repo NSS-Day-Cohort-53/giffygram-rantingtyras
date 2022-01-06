@@ -12,13 +12,17 @@ export const profileFeed = () => {
     const numOfPosts = userPosts.length
     const messageSentArr = messages.filter(message => (message.userId === currentUser.id) && (message.recipientId === user.id))
     const messageRecArr = messages.filter(message => (message.userId === user.id) && (message.recipientId === currentUser.id))
-    const messageArr = messageSentArr.concat(messageRecArr)
+    const unorderedMessageArr = messageSentArr.concat(messageRecArr)
+    const messageArr = unorderedMessageArr.sort((a, b) => b.id - a.id);
+
     const messageList = () => {
         let html = `<ul>`
         const messageArray = messageArr.map((message) => {
+            const messageSender = users.find(user => user.id === message.userId)
+            const messageRecipient = users.find(user => user.id === message.recipientId)
             return `<li>
-            <p>From: ${message.userId}</p>
-            <p>To: ${message.recipientId}</p>
+            <p>From: ${messageSender.name}</p>
+            <p>To: ${messageRecipient.name}</p>
             <p>${message.text}</p>
             </li>`
         })
@@ -35,4 +39,3 @@ export const profileFeed = () => {
     <p>${messageList()}</p>
     `
 }
-//Messages Between logged in and profiled user in descending chronological order
