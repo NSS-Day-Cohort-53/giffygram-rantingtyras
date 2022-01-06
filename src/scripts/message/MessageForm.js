@@ -8,9 +8,11 @@ import { MessagePackager } from "../friends/DirectMessage.js"
 export const msgSubmission = () => {
     const users = getUsers()
         let html = `
-        <label class="label" for="recipient">Recipient:</label>
-        <select name="recipient" id="recipient">
-        <option value="0">Choose a Recipient</option>`
+        <h3>Direct Message</h3>
+        <div class="directMessage">
+            <label class="label" for="recipient">Recipient:</label>
+            <select name="recipient" id="recipient" class="message__input">
+            <option value="0">Choose a Recipient</option>`
         const messageRecipients = users.map((user) => {
             return `
             <option value="${user.id}">
@@ -20,13 +22,13 @@ export const msgSubmission = () => {
         html += messageRecipients.join("")
         html += `</select>`
         html += `
-            <div>
-            <label class="label" for="msg">Message:</label>
-            <input type="text" name="msg" id="msgTxt" placeholder="Message to User"/>
-            </div>
-            <button class="button button__send" id="sendMsg">Send</button>
-            <button class="button button__cancel" id="cancelMsg">Cancel</button>
-            `
+                <div>
+                <label class="label" for="msg">Message:</label>
+                <input type="textarea" name="msg" class="message__input" id="msgTxt" placeholder="Message to User"/>
+                </div>
+                <button class="button button__send" id="sendMsg">Send</button>
+                <button class="button button__cancel" id="cancelMsg">Cancel</button>
+            </div>`
         return html
 }
 

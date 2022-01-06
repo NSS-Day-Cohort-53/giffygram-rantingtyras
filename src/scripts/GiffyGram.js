@@ -9,16 +9,9 @@ export const GiffyGram = () => {
     return `
         <header>
             ${Navbar()}
-            <br>
-            <br>
-            <br>
-            <div id="msgForm">
-            </div>
-            <br>
-            ${gifSubmission()}
-            <br>
-            ${Feed()}
         </header>
+        <div id="msgForm"></div>
+        ${Feed()}
         ${Footer()}
     `
 }
