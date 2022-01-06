@@ -41,7 +41,7 @@ document.addEventListener("click", clickEvent => {
                 title: title,
                 description: description,
                 imageUrl: img,
-                timestamp: Date(Date.now()).toString(),
+                timestamp: Date.now(),
                 userId: userId
         }
         sendPost(dataToSendToApi)
