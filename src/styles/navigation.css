@@ -63,6 +63,8 @@
 
 .navigation__logout {
     margin-right: 2em;
+    display: flex;
+    align-items: center;
 }
 
 #directMessageIcon {
