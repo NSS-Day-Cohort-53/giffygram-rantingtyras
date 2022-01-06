@@ -1,4 +1,4 @@
-import { setFeedChosenUser, setFeedChosenYear, setFeedDisplayFavorites, setFeedDisplayMessages } from "../data/provider.js";
+import { setFeedChosenUser, setFeedChosenYear, setFeedDisplayFavorites, setFeedDisplayMessages, setFeedDisplayProfile, setUserProfileId } from "../data/provider.js";
 
 export const Navbar = () => {
     return `
@@ -28,6 +28,8 @@ applicationElement.addEventListener("click", (event) => {
         setFeedChosenYear(null)
         setFeedDisplayMessages(false)
         setFeedDisplayFavorites(false)
+        setFeedDisplayProfile(false)
+        setUserProfileId(null)
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
     } else if (event.target.id === "directMessageIcon") {
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
