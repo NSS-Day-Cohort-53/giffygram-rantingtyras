@@ -45,58 +45,42 @@ export const postFeed = () => {
     );
   }
 
-  let html = `<ul>`;
+  posts.sort((a,b) => b.timestamp - a.timestamp)
+
   const buildPostFeed = posts.map((post) => {
     let foundUser = users.find((user) => user.id === post.userId);
 
     let currentUserId = localStorage.gg_user;
 
-    if (parseInt(currentUserId) === parseInt(foundUser.id)) {
-      return `<li>
-         <p>${post.title}</p>
-         <p><img src="${post.imageUrl}" alt=""></p>
-         <p>${post.description}</p>
-         <p>Post By: <div class="profileLink" name="profileName" id="${
-           foundUser.id
-         }">${foundUser.name}</div> at ${post.timestamp}</p>
-         <img id="${post.id}" ${
-        likes.find(
-          (like) =>
-            like.userId === parseInt(localStorage.gg_user) &&
-            like.postId === post.id
-        )
-          ? (star = `class="star" name="star__fave" src="../images/favorite-star-yellow.svg" alt="Yellow Star"`)
-          : (star = `class="star" name="star__notFave" src="../images/favorite-star-blank.svg" alt="Empty Star"`)
-      }>
-         <button id="deletePost--button-${post.id}">Delete</button>
-         </li>
-         <br></br>
-         <br></br>
-         <br></br>`;
-    } else {
-      return `<li>
-         <p>${post.title}</p>
-         <p><img src="${post.imageUrl}" alt=""></p>
-         <p>${post.description}</p>
-         <p>Post By: <div class="profileLink" id="${foundUser.id}">${
-        foundUser.name
-      }</div> at ${post.timestamp}</p>
-         <img id="${post.id}" ${
-        likes.find(
-          (like) =>
-            like.userId === parseInt(localStorage.gg_user) &&
-            like.postId === post.id
-        )
-          ? (star = `class="star" name="star__fave" src="../images/favorite-star-yellow.svg" alt="Yellow Star"`)
-          : (star = `class="star" name="star__notFave" src="../images/favorite-star-blank.svg" alt="Empty Star"`)
-      }>
-         </li>`;
-    }
+    return `
+    <section class="post">
+        <h3 class="post__remark">${post.title}</h3>
+        <img src="${post.imageUrl}" alt="" class="post__image">
+        <div class="">${post.description}</div>
+        <div class="post__tagline">Post By:
+            <span class="profileLink" name="profileName" id="${foundUser.id}">
+                ${foundUser.name}
+            </span> at ${new Date(post.timestamp).toLocaleString()}
+        </div>
+        <div class="post__actions">
+            <img class="star" id="${post.id}" ${
+                likes.find(
+                (like) =>
+                    like.userId === parseInt(localStorage.gg_user) &&
+                    like.postId === post.id
+                )
+                ? (star = `class="star" name="star__fave" src="../images/favorite-star-yellow.svg" alt="Yellow Star"`)
+                : (star = `class="star" name="star__notFave" src="../images/favorite-star-blank.svg" alt="Empty Star"`)
+            }>
+            ${parseInt(currentUserId) === parseInt(foundUser.id) ? `<img src="./images/block.svg" id="deletePost--button-${post.id}" class="star"/>` : ``}
+                
+        </div>
+        
+    </section>`;
   });
   //this line will populate a delete button only if the gif belongs to the logged in user
 
-  html += buildPostFeed.join("");
-  html += `</ul>`;
+  const html = buildPostFeed.join("");
   return html;
 };
 
