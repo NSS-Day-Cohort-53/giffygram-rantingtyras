@@ -125,6 +125,7 @@ export const postUser = (userObj) => {
 export const setFeedChosenUser = (userId) => applicationState.feed.chosenUser = userId;
 export const setFeedChosenYear = (year) => applicationState.feed.chosenYear = year;
 export const toggleFeedDisplayFavorites = () => applicationState.feed.displayFavorites = !applicationState.feed.displayFavorites;
+export const setFeedDisplayFavorites = (bool) => applicationState.feed.displayFavorites = bool;
 export const setFeedDisplayMessages = (bool) => applicationState.feed.displayMessages = bool;
 
 export const deletePost = (postId) => {

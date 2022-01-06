@@ -1,3 +1,5 @@
+import { setFeedChosenUser, setFeedChosenYear, setFeedDisplayFavorites, setFeedDisplayMessages } from "../data/provider.js";
+
 export const Navbar = () => {
     return `
         <nav class="navigation">
@@ -22,6 +24,10 @@ const applicationElement = document.querySelector(".giffygram");
 
 applicationElement.addEventListener("click", (event) => {
     if (event.target.id === "logo") {
+        setFeedChosenUser(null)
+        setFeedChosenYear(null)
+        setFeedDisplayMessages(false)
+        setFeedDisplayFavorites(false)
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
     } else if (event.target.id === "directMessageIcon") {
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
