@@ -53,6 +53,10 @@
     cursor: pointer;
 }
 
+.notification__count > span {
+    vertical-align: text-top;
+}
+
 .navigation__messageItem {
     flex: 1;
 }
