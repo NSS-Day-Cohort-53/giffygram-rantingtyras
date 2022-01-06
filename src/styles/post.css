@@ -77,3 +77,9 @@
     width: 2em;
     height: 2em;
 }
+
+.profileLink {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
