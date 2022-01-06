@@ -12,6 +12,8 @@ const applicationState = {
         chosenYear: null,
         displayFavorites: false,
         displayMessages: false,
+        displayProfile: false,
+        UserProfileId: null
     },
 };
 
@@ -140,6 +142,8 @@ export const setFeedChosenYear = (year) => applicationState.feed.chosenYear = ye
 export const toggleFeedDisplayFavorites = () => applicationState.feed.displayFavorites = !applicationState.feed.displayFavorites;
 export const setFeedDisplayFavorites = (bool) => applicationState.feed.displayFavorites = bool;
 export const setFeedDisplayMessages = (bool) => applicationState.feed.displayMessages = bool;
+export const setFeedDisplayProfile = (bool) => applicationState.feed.displayProfile = bool;
+export const setUserProfileId = (int) => applicationState.feed.UserProfileId = int;
 
 
 

@@ -1,6 +1,14 @@
-import { setFeedChosenUser, setFeedChosenYear, setFeedDisplayFavorites, setFeedDisplayMessages } from "../data/provider.js";
+import { getMessages, getCurrentUser, setFeedChosenUser, setFeedChosenYear, setFeedDisplayFavorites, setFeedDisplayMessages } from "../data/provider.js";
 
 export const Navbar = () => {
+    let messages = getMessages();
+    const currentUser = getCurrentUser();
+
+    messages = messages.filter(
+        (message) => message.recipientId === currentUser.id && !message.read
+    );
+    const messageCount = messages.length;
+
     return `
         <nav class="navigation">
             <div class="navigation__icon navigation__item">
@@ -11,7 +19,7 @@ export const Navbar = () => {
             </div>
             <div class="navigation__item navigation__message" >
                 <img src="./images/fountain-pen.svg" alt="Direct message" id="directMessageIcon"/>
-                <div class="notification__count" id="notification">0</div>               
+                <div class="notification__count" id="notification">${messageCount}</div>               
             </div>
             <div class="navigation__item navigation__logout">
                 <button id="logout" class="fakeLink">Logout</button>
