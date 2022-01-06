@@ -5,18 +5,17 @@ import {
     setMessageRead,
 } from "../data/provider.js";
 
-const applicationElement = document.querySelector(".giffygram");
-
 export const MessageList = () => {
     let messages = getMessages();
     const users = getUsers();
     const currentUser = getCurrentUser();
-    let html = ``;
 
+    // filter messages to get only those sent to currentUser and has not been read yet
     messages = messages.filter(
         (message) => message.recipientId === currentUser.id && !message.read
     );
 
+    // if there are no messages, show to user that there are no messages to view
     if (messages.length === 0) {
         return `
                 <article>
@@ -26,9 +25,9 @@ export const MessageList = () => {
                 </article>
            `;
     } else {
-        const promisesArray = [];
+        // change each messages' read state to true and update in database
         messages.forEach((message) =>
-            promisesArray.push(setMessageRead(message))
+            setMessageRead(message)
         );
 
         return `
