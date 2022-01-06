@@ -1,5 +1,7 @@
 import { getUsers } from "../data/provider.js"
 import { sendMsg, getCurrentUser } from "../data/provider.js"
+
+
 //still needs functionality but form should be created
 
 export const msgSubmission = () => {
@@ -45,5 +47,18 @@ document.addEventListener("click", clickEvent => {
             userId: userId
         }
         sendMsg(dataToSendToApi)
+    }
+})
+
+document.addEventListener("click", (event)=>{
+    if (event.target.id === "directMessageIcon")
+    {
+        //applicationElement.dispatchEvent(new CustomEvent("DisplayDmForm"))  ${msgSubmission()}
+        document.querySelector("#msgForm").innerHTML= msgSubmission();
+    }
+
+    if (event.target.id === "cancelMsg")
+    {
+        document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"));
     }
 })

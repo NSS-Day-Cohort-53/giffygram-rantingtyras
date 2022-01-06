@@ -30,7 +30,7 @@ applicationElement.addEventListener("click", (event) => {
         setFeedDisplayFavorites(false)
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
     } else if (event.target.id === "directMessageIcon") {
-        applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+        //applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
     } else if (event.target.id === "notifiction") {
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
     } else if (event.target.id === "logout") {
