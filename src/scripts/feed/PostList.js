@@ -58,9 +58,7 @@ export const postFeed = () => {
         <img src="${post.imageUrl}" alt="" class="post__image">
         <div class="">${post.description}</div>
         <div class="post__tagline">Post By:
-            <span class="profileLink" name="profileName" id="${foundUser.id}">
-                ${foundUser.name}
-            </span> at ${new Date(post.timestamp).toLocaleString()}
+            <span class="profileLink" name="profileName" id="${foundUser.id}">${foundUser.name}</span> at ${new Date(post.timestamp).toLocaleString()}
         </div>
         <div class="post__actions">
             <img class="star" id="${post.id}" ${
