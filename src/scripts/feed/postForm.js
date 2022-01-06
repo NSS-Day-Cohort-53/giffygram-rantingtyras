@@ -20,7 +20,7 @@ applicationElement.addEventListener("click", event => {
                     <input type="text" name="url" class="newPost__input" placeholder="URL or Gif"/>
                 </div>
                 <div class="field">
-                    <input type="textarea" name="description" class="newPost__input newPost__description" placeholder="Story Behind Your Gif..."/>
+                    <textarea name="description" class="newPost__input newPost__description" placeholder="Story Behind Your Gif..."/></textarea>
                 </div>
                 <button name="button__submit" class="button button__submit" id="submitGif">Submit</button>
                 <button name="button__cancel" class="button button__cancel" id="cancelGif">Cancel</button>
