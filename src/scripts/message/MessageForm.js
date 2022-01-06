@@ -1,5 +1,6 @@
 import { getUsers } from "../data/provider.js"
 import { sendMsg, getCurrentUser } from "../data/provider.js"
+import { MessagePackager } from "../friends/DirectMessage.js"
 
 
 //still needs functionality but form should be created
@@ -21,7 +22,7 @@ export const msgSubmission = () => {
         html += `
             <div>
             <label class="label" for="msg">Message:</label>
-            <input type="text" name="msg" placeholder="Message to User"/>
+            <input type="text" name="msg" id="msgTxt" placeholder="Message to User"/>
             </div>
             <button class="button button__send" id="sendMsg">Send</button>
             <button class="button button__cancel" id="cancelMsg">Cancel</button>
@@ -31,22 +32,11 @@ export const msgSubmission = () => {
 
 document.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "sendMsg") {
-        const users = getUsers()
-        const selectedRecipient = document.querySelector("select[name='recipient']").value
-        const foundRecipient = users.find(user => user.id === parseInt(selectedRecipient))
-        const recipientId = foundRecipient.id
-        const read = false
-        const text = document.querySelector("input[name='msg']").value
-        const user = getCurrentUser()
-        const userId = user.id
-
-        const dataToSendToApi = {
-            recipientId: recipientId,
-            read: read,
-            text: text,
-            userId: userId
-        }
-        sendMsg(dataToSendToApi)
+         let senderId = parseInt(localStorage.gg_user);
+        let reciverId = parseInt(document.querySelector("#recipient").value);
+        let content = (document.querySelector("#msgTxt").value);
+        
+        MessagePackager(senderId, reciverId, content, false);
     }
 })
 
@@ -62,3 +52,4 @@ document.addEventListener("click", (event)=>{
         document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"));
     }
 })
+

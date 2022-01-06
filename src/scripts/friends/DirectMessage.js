@@ -12,10 +12,5 @@ export const MessagePackager = (sender, recipient, message, readStatus) => {
 
 }
 
-document.addEventListener("click", (event)=>{
-    if (event.target.id === "sendMsg")
-    {
-        
-    }
-})
+
 
