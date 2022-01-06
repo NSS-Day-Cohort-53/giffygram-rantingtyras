@@ -53,12 +53,18 @@
     cursor: pointer;
 }
 
+.notification__count > span {
+    vertical-align: text-top;
+}
+
 .navigation__messageItem {
     flex: 1;
 }
 
 .navigation__logout {
     margin-right: 2em;
+    display: flex;
+    align-items: center;
 }
 
 #directMessageIcon {
