@@ -45,6 +45,8 @@ export const postFeed = () => {
     );
   }
 
+  posts.sort((a,b) => b.timestamp - a.timestamp)
+
   const buildPostFeed = posts.map((post) => {
     let foundUser = users.find((user) => user.id === post.userId);
 
