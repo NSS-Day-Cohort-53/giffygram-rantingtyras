@@ -1,3 +1,3 @@
 export const MessageList = () => {
-    return ``
+    return `<h1>Messages</h1>`
 }
