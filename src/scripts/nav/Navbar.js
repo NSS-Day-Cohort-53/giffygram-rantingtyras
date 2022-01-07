@@ -12,11 +12,13 @@ export const Navbar = () => {
 
     return `
         <nav class="navigation">
-            <div class="navigation__icon navigation__item">
-                <img src="./images/pb.png" alt="Giffygram icon" id="logo" />
-            </div>
-            <div class="navigation__item navigation__name">
-                Giffygram
+            <div class="navigation__nameAndLogo">
+                <div class="navigation__icon navigation__item">
+                    <img src="./images/pb.png" alt="Giffygram icon" id="logo" />
+                </div>
+                <div class="navigation__item navigation__name">
+                    Giffygram
+                </div>
             </div>
             <div class="navigation__item navigation__search">
                 <input type="search" id="postSearch" name="postSearch" placeholder="seach posts" value="${feed.searchText ? feed.searchText : ""}">
@@ -24,15 +26,18 @@ export const Navbar = () => {
             </div>
             <div class="navigation__item navigation__message" >
                 <img src="./images/fountain-pen.svg" alt="Direct message" id="directMessageIcon"/>
-                <div class="notification__count" id="notification"><span>${messageCount}</span></div>               
-            </div>
-            <div>
-            <button name="darkMode" id="toggle-dark" type="button"></button>
+                <div class="notification__count" id="notification"><span>${messageCount}</span></div> 
+                <div>
+                    <button name="darkMode" id="toggle-dark" type="button"></button>
+                </div>              
             </div>
             <div class="navigation__item navigation__logout">
                 <button id="logout" class="fakeLink">Logout</button>
             </div>
-            </nav>
+            <div class="hamburgerIcon">
+                <img src="./images/hamburgericon.png" id="hamburgerIcon"  alt="hamburger menu">
+            </div>
+        </nav>
     `;
 };
 
@@ -62,6 +67,16 @@ applicationElement.addEventListener("click", (event) => {
         } else {
             setSearchText(searchText);
             applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+        }      
+    } else if (event.target.id === "hamburgerIcon") {
+        const msgFormElement = applicationElement.querySelector("#msgForm");
+        const navbar = applicationElement.querySelector(".navigation");
+        if (navbar.className === "navigation") {
+            navbar.className += " responsive";
+            msgFormElement.className += "dropdown"
+        } else {
+            navbar.className = "navigation";
+            msgFormElement.classList.remove("dropdown");
         }
         
     }
