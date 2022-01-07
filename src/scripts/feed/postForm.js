@@ -22,7 +22,7 @@ applicationElement.addEventListener("click", event => {
                 <div class="field">
                     <textarea name="description" class="newPost__input newPost__description" placeholder="Story Behind Your Gif..."/></textarea>
                 </div>
-                <span alert id="urlError" hidden="true">Please enter all fields</span>
+                <span alert id="postError" hidden="true">Please enter all fields</span>
                 <button name="button__submit" class="button button__submit" id="submitGif">Submit</button>
                 <button name="button__cancel" class="button button__cancel" id="cancelGif">Cancel</button>
             </div>`
@@ -37,9 +37,9 @@ document.addEventListener("click", clickEvent => {
         const img = document.querySelector("input[name='url']").value
         
         if (!img || !title || !description) {
-            const urlErrorElement = document.getElementById("urlError");
-            urlErrorElement.classList.add("visible");
-            urlErrorElement.setAttribute("hidden", false);
+            const postErrorElement = document.getElementById("postError");
+            postErrorElement.classList.add("visible");
+            postErrorElement.setAttribute("hidden", false);
         } else {
             const user = getCurrentUser()
             const userId = user.id

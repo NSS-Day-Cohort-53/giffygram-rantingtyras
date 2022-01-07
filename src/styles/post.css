@@ -86,13 +86,13 @@
     text-decoration: underline;
 }
 
-#urlError {
+#postError {
     display: none;
     font-size: 0.8em;
     color: red;
 }
 
-#urlError.visible {
+#postError.visible {
     display: block;
     margin: 0 0 0.8em;
 }
