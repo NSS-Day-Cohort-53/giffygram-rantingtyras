@@ -26,10 +26,12 @@ export const Navbar = () => {
                 <img src="./images/fountain-pen.svg" alt="Direct message" id="directMessageIcon"/>
                 <div class="notification__count" id="notification"><span>${messageCount}</span></div>               
             </div>
+            <div>
+            <button name="darkMode" id="toggle-dark" type="button"></button>
+            </div>
             <div class="navigation__item navigation__logout">
                 <button id="logout" class="fakeLink">Logout</button>
             </div>
-            <button name="darkMode" id="toggle-dark" type="button"></button>
             </nav>
     `;
 };
