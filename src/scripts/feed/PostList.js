@@ -26,7 +26,7 @@ export const postFeed = () => {
 
   if(feed.searchText) {
     posts = posts.filter(post => {
-      const postUser = users.filter(user => user.id === post.userId)
+      const postUser = users.find(user => user.id === post.userId)
       let postTitle = post.title;
       let postDesc = post.description;
       let postUserName = postUser.name;
