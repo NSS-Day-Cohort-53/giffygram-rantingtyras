@@ -77,7 +77,9 @@ applicationElement.addEventListener("click", (event) => {
             
         }
         else {
-            window.alert("please fill in all fields");
+            const regErrorAlertElement = document.getElementById("regErrorAlert");
+            regErrorAlertElement.classList.add("visible");
+            regErrorAlertElement.setAttribute("hidden", false);
         }
     }
 })
