@@ -104,12 +104,12 @@ export const Footer = () => {
                     <option value="0" ${
                         feed.chosenUser === null ? `selected` : ""
                     }>All</option>
-                    <option value="69">following</option>
+                    ${isOnFollow ==="false"? `<option value="69">Following view</option>` : ` <option id="followOpt" value="69" selected>following</option>`}                   
                     ${users
                         .map(
                             (user) =>
-                                `<option value=${user.id} ${
-                                    feed.chosenUser === user.id
+                                `<option value=${user.id} ${                                    
+                                    feed.chosenUser === user.id 
                                         ? `selected`
                                         : ""
                                 }>${user.name}</option>`
@@ -127,7 +127,16 @@ export const Footer = () => {
     `;
 };
 
+
+
+
+
+
 const applicationElement = document.querySelector(".giffygram");
+
+
+export let isOnFollow= "false";
+applicationElement.addEventListener("setIsOnFollowToFalse",()=> isOnFollow="false")
 
 applicationElement.addEventListener("change", (event) => {
     if (event.target.id === "showOnlyFavorites") {
@@ -157,6 +166,7 @@ applicationElement.addEventListener("change", (event) => {
                 setFeedChosenUser(currUserFlws);
                 setFeedChosenYear(null);
                })
+               isOnFollow=true;
                 /*sort through the followers
                 put all the followerids that = this usercurrent 
                 and push them into an array*/
