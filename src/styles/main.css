@@ -17,7 +17,9 @@ body, button, input, select, textarea {
     line-height: 1.5;
     padding: 0;
     margin: 0;
+    background-color: white;
 }
+
 
 h1, h2, h3, h4, h5, h6 {
     font-family: "Patua One", serif;
@@ -53,4 +55,64 @@ h1, h2, h3, h4, h5, h6 {
 
 #logo {
     cursor: pointer;
+}
+
+.dark-mode {
+    background-color: #454545;
+    color: white;
+}
+
+body.dark-mode > main > header > nav.navigation {
+    background-color: #454545;
+    color: white;
+}
+
+body.dark-mode > main > footer {
+    background-color: #454545;
+    color: white;
+}
+
+body.dark-mode > main > div > div.directMessage {
+    background-color: #454545;
+    color: white;
+}
+
+body.dark-mode > main > div.profile__feed {
+    background-color: #454545;
+    color: white;
+}
+
+body.dark-mode > main > div > section > ul > li.profile__msg {
+    background-color: slategray;
+    color: white;
+}
+
+body.dark-mode > main > div > section > ul > li.profile__post {
+    background-color:slategray;
+    color: white;
+}
+
+body.dark-mode > main > div.profile__feed {
+    background-color: gray;
+    color: white;
+}
+
+body.dark-mode > main > div> div.directMessage {
+    background-color: gray;
+    color: white;
+}
+
+body.dark-mode > main > div> section > div > span.profileLink {
+    color: cyan;
+    font-weight: bold;
+}
+
+body.dark-mode > main > div> section > ul > li > div > span.profileLink {
+    color: cyan;
+    font-weight: bold;
+}
+
+body.dark-mode > main > header > nav > div > button.fakeLink {
+    color: cyan;
+    font-weight: bold;
 }
