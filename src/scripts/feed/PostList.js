@@ -49,7 +49,9 @@ export const postFeed = () => {
 //   ///////////////////////////////////////////////////////////////////////////////////////////  this is where  posts for the chosen user are being chosen to be displayed
   // change posts array to include only those of the chosen user
   if (feed.chosenUser) {
-    if (typeOf(getFeed().feed.chosenUser) !== "object")
+    let dataType =JSON.stringify(typeof(getFeed().chosenUser))
+    console.log(dataType)
+    if (dataType !== "\"object\"")
     { 
     posts = posts.filter((post) => feed.chosenUser === post.userId);
     }
@@ -59,7 +61,7 @@ export const postFeed = () => {
       let relevantPostsArr = [];
       posts.map((post)=> {
         feed.chosenUser.map((followObj)=> {
-          if (followObj.followedId === post.id)
+          if (followObj.followedId === post.userId)
           {
             relevantPostsArr.push(post);
           }

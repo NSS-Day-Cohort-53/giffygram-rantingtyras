@@ -138,24 +138,25 @@ applicationElement.addEventListener("change", (event) => {
             setFeedChosenUser(null);
         } else if (event.target.value !== 0) {
             //here specify what to do if folowing is chosen
-            if (event.target.value !== 69)
+            if (parseInt(event.target.value) !== 69)
             {
             setFeedChosenYear(null);
             setFeedChosenUser(parseInt(event.target.value));
             }
             else 
             {
-               const follows = getfollows();
+               const follows = getFollows();
                let currUserFlws = [];
-               follows.map((follow)=> {
-                   if (follow.followerId === localStorage.gg_user)
+               follows.then((follows)=> follows.map((follow)=> {
+                   if (follow.followerId === parseInt(localStorage.gg_user))
                    {
                        currUserFlws.push(follow);
                    } 
+               })).then(()=>{
+                   console.log(currUserFlws)
+                setFeedChosenUser(currUserFlws);
+                setFeedChosenYear(null);
                })
-
-               setFeedChosenUser(currUserFlws);
-               setFeedChosenYear(null);
                 /*sort through the followers
                 put all the followerids that = this usercurrent 
                 and push them into an array*/
