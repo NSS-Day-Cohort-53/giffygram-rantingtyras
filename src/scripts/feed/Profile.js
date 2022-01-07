@@ -87,7 +87,7 @@ export const profileFeed = () => {
     return `
     <button id="follow--button"> Follow </button>
     <button id="profile__close"></button>
-    <section class="profile__header">
+    <section id="profile" class="profile__header">
     <h2 class="profile__userName">${user.name}</h2>
     <br>
     <p>Total Number of Posts: ${numOfPosts}</p>

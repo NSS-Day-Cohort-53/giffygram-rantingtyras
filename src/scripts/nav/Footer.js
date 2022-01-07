@@ -78,7 +78,7 @@ export const Footer = () => {
 
     return `
         <footer class="footer">
-            <div class="footer__item">
+            <div  class="footer__item">
                 <select id="yearSelection">
                     <option value="0" ${
                         feed.chosenYear === null ? `selected` : ""
