@@ -17,6 +17,10 @@ export const Navbar = () => {
             <div class="navigation__item navigation__name">
                 Giffygram
             </div>
+            <div class="navigation__item navigation__search">
+                <input type="search" id="postSearch" name="postSearch">
+                <button name="postSearchBtn" id="postSearchBtn" for="postSearch">Search</label>
+            </div>
             <div class="navigation__item navigation__message" >
                 <img src="./images/fountain-pen.svg" alt="Direct message" id="directMessageIcon"/>
                 <div class="notification__count" id="notification"><span>${messageCount}</span></div>               
