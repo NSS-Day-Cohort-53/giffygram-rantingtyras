@@ -13,7 +13,8 @@ const applicationState = {
         displayFavorites: false,
         displayMessages: false,
         displayProfile: false,
-        UserProfileId: null
+        UserProfileId: null,
+        searchText: null
     },
 };
 
@@ -141,7 +142,7 @@ export const setFeedDisplayFavorites = (bool) => applicationState.feed.displayFa
 export const setFeedDisplayMessages = (bool) => applicationState.feed.displayMessages = bool;
 export const setFeedDisplayProfile = (bool) => applicationState.feed.displayProfile = bool;
 export const setUserProfileId = (int) => applicationState.feed.UserProfileId = int;
-
+export const setSearchText = (text) => applicationState.feed.searchText = text;
 
 
 export const deletePost = (postId) => {
