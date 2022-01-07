@@ -9,6 +9,15 @@
     flex-wrap: wrap;
 }
 
+#profile__close {
+    background-image: url("https://pixy.org/src/68/683752.png");
+    background-size: cover;
+    width: 2em;
+    height: 2em;
+    border-radius: 10px;
+    align-self: flex-end;
+}
+
 .line {
     border-bottom: 1px solid darkgray;
     margin-left: 6.5em;
@@ -35,10 +44,11 @@
 
 .profile__section {
     display: flex;
+    flex-flow: row wrap;
 }
 
 .profile__posts {
-    flex-basis: 50%;
+    flex-basis: 45%;
     list-style-type: none;
     padding: 1em;
 }
@@ -51,7 +61,7 @@
 }
 
 .profile__msgs {
-    flex-basis: 50%;
+    flex-basis: 45%;
     list-style-type: none;
     padding: 1em;
 }

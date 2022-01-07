@@ -85,6 +85,7 @@ export const profileFeed = () => {
     }
 
     return `
+    <button id="profile__close"></button>
     <section class="profile__header">
     <h2 class="profile__userName">${user.name}</h2>
     <br>
