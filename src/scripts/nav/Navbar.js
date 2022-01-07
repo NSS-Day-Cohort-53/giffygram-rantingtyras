@@ -1,8 +1,9 @@
-import { getMessages, getCurrentUser, setFeedChosenUser, setFeedChosenYear, setFeedDisplayFavorites, setFeedDisplayMessages, setFeedDisplayProfile, setUserProfileId } from "../data/provider.js";
+import { getMessages, getCurrentUser, setFeedChosenUser, setFeedChosenYear, setFeedDisplayFavorites, setFeedDisplayMessages, setFeedDisplayProfile, setUserProfileId, setSearchText, getFeed } from "../data/provider.js";
 
 export const Navbar = () => {
     let messages = getMessages();
     const currentUser = getCurrentUser();
+    const feed = getFeed();
 
     messages = messages.filter(
         (message) => message.recipientId === currentUser.id && !message.read
@@ -16,6 +17,10 @@ export const Navbar = () => {
             </div>
             <div class="navigation__item navigation__name">
                 Giffygram
+            </div>
+            <div class="navigation__item navigation__search">
+                <input type="search" id="postSearch" name="postSearch" placeholder="seach posts" value="${feed.searchText ? feed.searchText : ""}">
+                <button name="postSearchBtn" id="postSearchBtn" for="postSearch">Search</label>
             </div>
             <div class="navigation__item navigation__message" >
                 <img src="./images/fountain-pen.svg" alt="Direct message" id="directMessageIcon"/>
@@ -39,6 +44,7 @@ applicationElement.addEventListener("click", (event) => {
         setFeedDisplayFavorites(false)
         setFeedDisplayProfile(false)
         setUserProfileId(null)
+        setSearchText(null)
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
     } else if (event.target.id === "directMessageIcon") {
         //applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
@@ -48,6 +54,16 @@ applicationElement.addEventListener("click", (event) => {
     } else if (event.target.id === "logout") {
         localStorage.removeItem("gg_user");
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+    } else if (event.target.id === "postSearchBtn") {
+        const searchText = applicationElement.querySelector(`input[name="postSearch"]`).value.trim().toLowerCase();
+        if (searchText === "") {
+            setSearchText(null);
+            applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+        } else {
+            setSearchText(searchText);
+            applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+        }
+        
     }
 });
 
