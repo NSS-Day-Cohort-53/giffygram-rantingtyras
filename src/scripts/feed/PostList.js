@@ -32,10 +32,27 @@ export const postFeed = () => {
 //   ///////////////////////////////////////////////////////////////////////////////////////////  this is where  posts for the chosen user are being chosen to be displayed
   // change posts array to include only those of the chosen user
   if (feed.chosenUser) {
+    if (typeOf(getFeed().feed.chosenUser) !== "object")
+    { 
     posts = posts.filter((post) => feed.chosenUser === post.userId);
+    }
+    else
+    {
+      // map through posts and chosen user to aggregate the posts by people the user follows
+      let relevantPostsArr = [];
+      posts.map((post)=> {
+        feed.chosenUser.map((followObj)=> {
+          if (followObj.followedId === post.id)
+          {
+            relevantPostsArr.push(post);
+          }
+        })
+      })
+      posts =relevantPostsArr;
+    }
   }
-
   // change posts array to include only the currentUser's favorites
+
   if (feed.displayFavorites) {
     const currentUserLikes = likes.filter(
       (like) => like.userId === currentUser.id
