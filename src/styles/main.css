@@ -111,3 +111,8 @@ body.dark-mode > main > div> section > ul > li > div > span.profileLink {
     color: cyan;
     font-weight: bold;
 }
+
+body.dark-mode > main > header > nav > div > button.fakeLink {
+    color: cyan;
+    font-weight: bold;
+}
