@@ -22,19 +22,22 @@ export const msgSubmission = () => {
         html += messageRecipients.join("")
         html += `</select>`
         html += `
-                <div>
+            <div>
                 <label class="label" for="msg">Message:</label>
                 <textarea name="msg" class="message__input" id="msgTxt" placeholder="Message to User"></textarea>
-                </div>
+            </div>
+            <div>
                 <button class="button button__send" id="sendMsg">Send</button>
                 <button class="button button__cancel" id="cancelMsg">Cancel</button>
+                <span id="msgError" hidden="true">Please enter all fields</span>
+                <span id="msgSentAlert" hidden="true">Message sent successfully</span>
             </div>`
         return html
 }
 
 document.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "sendMsg") {
-         let senderId = parseInt(localStorage.gg_user);
+        let senderId = parseInt(localStorage.gg_user);
         let reciverId = parseInt(document.querySelector("#recipient").value);
         let content = (document.querySelector("#msgTxt").value);
         
@@ -45,8 +48,13 @@ document.addEventListener("click", clickEvent => {
 document.addEventListener("click", (event)=>{
     if (event.target.id === "directMessageIcon")
     {
-        //applicationElement.dispatchEvent(new CustomEvent("DisplayDmForm"))  ${msgSubmission()}
-        document.querySelector("#msgForm").innerHTML= msgSubmission();
+        const msgFormElement = document.querySelector("#msgForm");
+        if (msgFormElement.textContent === "") {
+            msgFormElement.innerHTML= msgSubmission();
+        } else {
+            msgFormElement.innerHTML= "";
+        }
+        
     }
 
     if (event.target.id === "cancelMsg")

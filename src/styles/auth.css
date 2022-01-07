@@ -1,0 +1,14 @@
+.loginForm, .registerForm {
+    margin: 0 25%;
+}
+
+#loginErrorAlert, #regErrorAlert, #userNotFoundAlert {
+    display: none;
+    font-size: 0.8em;
+    color: red;
+}
+
+#loginErrorAlert.visible, #regErrorAlert.visible, #userNotFoundAlert.visible {
+    display: block;
+    margin: 0.8em 0;
+}

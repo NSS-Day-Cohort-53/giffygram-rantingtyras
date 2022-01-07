@@ -80,10 +80,7 @@ export const sendMsg = (msg) => {
         body: JSON.stringify(msg)
     }
     return fetch("http://localhost:8088/messages", fetchOptions)
-    .then(response => response.json())
-    .then(() => {
-        applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
-    }).then(()=>{window.alert("Message sent sucessfully")})
+    
 }
 
 export const sendPost = (post) => {

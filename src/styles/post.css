@@ -85,3 +85,15 @@
     color: blue;
     text-decoration: underline;
 }
+
+#postError {
+    display: none;
+    font-size: 0.8em;
+    color: red;
+}
+
+#postError.visible {
+    display: block;
+    margin: 0 0 0.8em;
+}
+
