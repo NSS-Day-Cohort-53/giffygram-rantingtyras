@@ -7,6 +7,7 @@ import {
     getFeed,
     setFeedChosenYear,
     getCurrentUser,
+    getFollows
 } from "../data/provider.js";
 
 export const Footer = () => {
@@ -102,12 +103,13 @@ export const Footer = () => {
                 <select id="userSelection" name="userSelection">
                     <option value="0" ${
                         feed.chosenUser === null ? `selected` : ""
-                    }>All</option></option>
+                    }>All</option>
+                    ${isOnFollow ==="false"? `<option value="69">Following view</option>` : ` <option id="followOpt" value="69" selected>following</option>`}                   
                     ${users
                         .map(
                             (user) =>
-                                `<option value=${user.id} ${
-                                    feed.chosenUser === user.id
+                                `<option value=${user.id} ${                                    
+                                    feed.chosenUser === user.id 
                                         ? `selected`
                                         : ""
                                 }>${user.name}</option>`
@@ -125,7 +127,16 @@ export const Footer = () => {
     `;
 };
 
+
+
+
+
+
 const applicationElement = document.querySelector(".giffygram");
+
+
+export let isOnFollow= "false";
+applicationElement.addEventListener("setIsOnFollowToFalse",()=> isOnFollow="false")
 
 applicationElement.addEventListener("change", (event) => {
     if (event.target.id === "showOnlyFavorites") {
@@ -135,8 +146,31 @@ applicationElement.addEventListener("change", (event) => {
         if (parseInt(event.target.value === 0)) {
             setFeedChosenUser(null);
         } else if (event.target.value !== 0) {
+            //here specify what to do if folowing is chosen
+            if (parseInt(event.target.value) !== 69)
+            {
             setFeedChosenYear(null);
             setFeedChosenUser(parseInt(event.target.value));
+            }
+            else 
+            {
+               const follows = getFollows();
+               let currUserFlws = [];
+               follows.then((follows)=> follows.map((follow)=> {
+                   if (follow.followerId === parseInt(localStorage.gg_user))
+                   {
+                       currUserFlws.push(follow);
+                   } 
+               })).then(()=>{
+                   console.log(currUserFlws)
+                setFeedChosenUser(currUserFlws);
+                setFeedChosenYear(null);
+               })
+               isOnFollow=true;
+                /*sort through the followers
+                put all the followerids that = this usercurrent 
+                and push them into an array*/
+            }
         } else {
             setFeedChosenUser(parseInt(event.target.value));
         }

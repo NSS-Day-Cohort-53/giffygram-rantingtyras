@@ -157,3 +157,26 @@ export const deleteFav = (id) => {
         }
         )
     }
+
+
+export const setUserFollow= (followObj)=> {
+    
+    const fetchOptions = {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(followObj)
+	};
+    
+   return fetch(`${apiURL}/follows`, fetchOptions);
+
+}
+
+
+
+export const getFollows = ()=> {
+    return fetch(`${apiURL}/follows`).then((folls)=> folls.json()).then((follows)=> follows.map((followObj)=>({...followObj})))
+}
+
+getFollows().then((follows)=> console.log(follows))

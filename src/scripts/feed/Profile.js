@@ -1,4 +1,4 @@
-import { getUsers, getPosts, getCurrentUser, getFeed, getMessages, getLikes } from "../data/provider.js";
+import { getUsers, getPosts, getCurrentUser, getFeed, getMessages, setUserFollow, getLikes } from "../data/provider.js";
 
 export const profileFeed = () => {
     let star;
@@ -85,6 +85,7 @@ export const profileFeed = () => {
     }
 
     return `
+    <button id="follow--button"> Follow </button>
     <button id="profile__close"></button>
     <section id="profile" class="profile__header">
     <h2 class="profile__userName">${user.name}</h2>
@@ -97,3 +98,23 @@ export const profileFeed = () => {
     </section>
     `
 }
+
+document.addEventListener("click", (event)=>{
+    if (event.target.id === "follow--button")
+    {
+        const feed = getFeed()
+        const userId = parseInt(feed.UserProfileId)
+        const user = getUsers().find(user => user.id === userId)
+        console.log(user.name)
+
+
+        let personToFollowId =parseInt(user.id)
+        let currUserID = parseInt(localStorage.gg_user);
+       
+        let followObj = {
+            followedId: personToFollowId,
+            followerId: currUserID
+        }
+        setUserFollow(followObj);
+    }
+})

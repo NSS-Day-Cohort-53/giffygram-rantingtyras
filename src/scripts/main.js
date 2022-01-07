@@ -11,6 +11,7 @@ import {
 } from "./data/provider.js";
 import { registerNewUser } from "./auth/Register.js";
 import { msgSubmission } from "./message/MessageForm.js";
+import { isOnFollow } from "./nav/Footer.js";
 
 const applicationElement = document.querySelector(".giffygram");
 
@@ -23,6 +24,8 @@ export const renderApp = () => {
                 const users = getUsers();
                 setCurrentUser(users.find(userObj => userObj.id === user));
                 applicationElement.innerHTML = GiffyGram();
+                document.dispatchEvent(new CustomEvent("setIsOnFollowToFalse"))
+                
             } else {
                 applicationElement.innerHTML = LoginForm();
             }
