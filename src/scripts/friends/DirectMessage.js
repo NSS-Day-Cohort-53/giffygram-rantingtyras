@@ -2,9 +2,15 @@ import { sendMsg } from "../data/provider.js"
 
 export const MessagePackager = (sender, recipient, message, readStatus) => {
 
-    if ( recipient.length < 1 || message.length < 1)
+    if ( recipient === 0 || !message)
     {
-        window.alert("Please fill in all message fields")
+        const msgSentAlertElement = document.getElementById("msgSentAlert");
+        msgSentAlertElement.classList.remove("visible");
+        msgSentAlertElement.setAttribute("hidden", true);
+
+        const msgErrorElement = document.getElementById("msgError");
+        msgErrorElement.classList.add("visible");
+        msgErrorElement.setAttribute("hidden", false);
     }
     else
     {
@@ -16,7 +22,11 @@ export const MessagePackager = (sender, recipient, message, readStatus) => {
         read: false
     }
 
-    sendMsg(messageObj);
+    return sendMsg(messageObj)
+        .then(()=>{
+            const applicationElement = document.querySelector(".giffygram");
+            applicationElement.dispatchEvent(new CustomEvent("messageSent"));
+        });
     }
 
 }

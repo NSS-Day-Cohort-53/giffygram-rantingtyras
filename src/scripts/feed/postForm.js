@@ -17,11 +17,12 @@ applicationElement.addEventListener("click", event => {
                     <input type="text" name="title" class="newPost__input" placeholder="Title"/>
                 </div>
                 <div class="field">
-                    <input type="text" name="url" class="newPost__input" placeholder="URL or Gif"/>
+                    <input type="text" name="url" class="newPost__input" placeholder="URL of Gif"/>
                 </div>
                 <div class="field">
                     <textarea name="description" class="newPost__input newPost__description" placeholder="Story Behind Your Gif..."/></textarea>
                 </div>
+                <span id="postError" hidden="true">Please enter all fields</span>
                 <button name="button__submit" class="button button__submit" id="submitGif">Submit</button>
                 <button name="button__cancel" class="button button__cancel" id="cancelGif">Cancel</button>
             </div>`
@@ -34,17 +35,24 @@ document.addEventListener("click", clickEvent => {
         const title = document.querySelector("input[name='title']").value
         const description = document.querySelector("textarea[name='description']").value
         const img = document.querySelector("input[name='url']").value
-        const user = getCurrentUser()
-        const userId = user.id
+        
+        if (!img || !title || !description) {
+            const postErrorElement = document.getElementById("postError");
+            postErrorElement.classList.add("visible");
+            postErrorElement.setAttribute("hidden", false);
+        } else {
+            const user = getCurrentUser()
+            const userId = user.id
 
-        const dataToSendToApi = {
-                title: title,
-                description: description,
-                imageUrl: img,
-                timestamp: Date.now(),
-                userId: userId
+            const dataToSendToApi = {
+                    title: title,
+                    description: description,
+                    imageUrl: img,
+                    timestamp: Date.now(),
+                    userId: userId
+            }
+            sendPost(dataToSendToApi)
         }
-        sendPost(dataToSendToApi)
     } 
     else {
         if (clickEvent.target.id === "cancelGif") {
