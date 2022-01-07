@@ -15,7 +15,7 @@ import { msgSubmission } from "./message/MessageForm.js";
 const applicationElement = document.querySelector(".giffygram");
 
 export const renderApp = () => {
-    Promise.all([fetchUsers(), fetchMessages(), fetchLikes(), fetchPosts()]).then(
+    return Promise.all([fetchUsers(), fetchMessages(), fetchLikes(), fetchPosts()]).then(
         () => {
             const user = parseInt(localStorage.getItem("gg_user"));
 
@@ -38,9 +38,12 @@ applicationElement.addEventListener("stateChanged", event => {
 
 
 applicationElement.addEventListener("messageSent", event => {
-    new Promise((renderApp) => {
-        renderApp()
-    }).then(()=> {
+    const render = new Promise(function(resolve) {
+        resolve(renderApp());
+    });
+
+    render 
+    .then(()=> {
         document.querySelector("#msgForm").innerHTML= msgSubmission();
         
         const msgSentAlertElement = document.getElementById("msgSentAlert");

@@ -22,7 +22,7 @@ export const MessagePackager = (sender, recipient, message, readStatus) => {
         read: false
     }
 
-    return sendMsg(messageObj).then(response => response.json())
+    return sendMsg(messageObj)
         .then(()=>{
             const applicationElement = document.querySelector(".giffygram");
             applicationElement.dispatchEvent(new CustomEvent("messageSent"));
