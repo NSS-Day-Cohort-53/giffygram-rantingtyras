@@ -1,6 +1,68 @@
 .profile__feed {
-    padding: 0.75rem 2rem 2rem 2rem;
-    margin: 5rem 25% 0 25%;
+    padding: 1rem 2rem 1rem 2rem;
+    margin: 5em 7% 5em 7%;
     background-color: aliceblue;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    flex-wrap: wrap;
+}
+
+.line {
+    border-bottom: 1px solid darkgray;
+    margin-left: 6.5em;
+    margin-right: 6.5em;
+}
+
+.line__msg {
+    border-bottom: 1px dashed darkgray;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.profile__header {
+   align-self: center;
+   text-align: center;
+   border-bottom: 2px dashed darkgray;
+   width: 100%;
+}
+
+.profile__userName {
+    margin: 0%;
+    padding: 0%;
+}
+
+.profile__section {
+    display: flex;
+}
+
+.profile__posts {
+    flex-basis: 50%;
+    list-style-type: none;
+    padding: 1em;
+}
+
+.profile__post {
+    border: 2px solid darkgray;
+    margin: 1em;
+    padding: 1em;
+    background-color: white;
+}
+
+.profile__msgs {
+    flex-basis: 50%;
+    list-style-type: none;
+    padding: 1em;
+}
+
+.profile__msg {
+    border: 2px solid darkgray;
+    margin: 1em;
+    padding: 1em;
+    background-color: white;
+}
+
+.profile__headings {
+    text-align: center;
 }

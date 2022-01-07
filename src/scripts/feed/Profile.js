@@ -26,19 +26,19 @@ export const profileFeed = () => {
     const messageArr = finalMessageArr().sort((a, b) => b.id - a.id);
 
     const messageList = () => {
-        let html = `<ul>`
+        let html = `<ul class="profile__msgs"><h3 class="profile__headings line">Messages</h3>`
         const messageArray = messageArr.map((message) => {
             const messageSender = users.find(user => user.id === message.userId)
             const messageRecipient = users.find(user => user.id === message.recipientId)
-            return `<li>
-            <p>From: ${messageSender.name}</p>
-            <p>To: ${messageRecipient.name}</p>
+            return `<li class="profile__msg">
+            <p><strong>From:</strong> ${messageSender.name}</p>
+            <p><strong>To:</strong> ${messageRecipient.name}</p>
+            <p class="line__msg"> </p>
             <p>${message.text}</p>
             </li>`
         })
-
        
-        html += messageArray.join("")
+        html += messageArray.join("")   
         html += `</ul>`
 
         return html
@@ -48,11 +48,11 @@ export const profileFeed = () => {
     userPostList.sort((a, b) => b.timestamp - a.timestamp);
 
     const postList = () => {
-        let html = `<ul>`
+        let html = `<ul class="profile__posts"><h3 class="profile__headings line">Posts</h3>`
 
         const postHtml = userPostList.map((post) => {
             const likes = getLikes()
-            return `<li>
+            return `<li class="profile__post">
             <h3 class="post__remark">${post.title}</h3>
             <img src="${post.imageUrl}" alt="" class="post__image">
             <div class="">${post.description}</div>
@@ -85,10 +85,14 @@ export const profileFeed = () => {
     }
 
     return `
-    <h2>${user.name}</h2>
+    <section class="profile__header">
+    <h2 class="profile__userName">${user.name}</h2>
     <br>
     <p>Total Number of Posts: ${numOfPosts}</p>
+    </section>
+    <section class="profile__section">
     <p>${messageList()}</p>
     <p>${postList()}</p>
+    </section>
     `
 }
