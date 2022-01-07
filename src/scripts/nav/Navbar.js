@@ -90,7 +90,6 @@ applicationElement.addEventListener("click", (event) => {
 document.addEventListener("click", clickEvent => {
     if (clickEvent.target.name === "darkMode"){
     const bodyElement = document.body;
-    const navElement 
     bodyElement.classList.toggle("dark-mode")
     }
 })
