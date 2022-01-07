@@ -22,6 +22,23 @@ export const postFeed = () => {
   const feed = getFeed();
   const currentUser = getCurrentUser();
 
+  // show searched posts
+
+  if(feed.searchText) {
+    posts = posts.filter(post => {
+      const postUser = users.find(user => user.id === post.userId)
+      let postTitle = post.title;
+      let postDesc = post.description;
+      let postUserName = postUser.name;
+
+      postTitle = postTitle ? postTitle.toLowerCase() : "";
+      postDesc = postDesc ? postDesc.toLowerCase() : "";
+      postUserName = postUserName ? postUserName.toLowerCase() : ""
+      
+      return postTitle.includes(feed.searchText) || postDesc.includes(feed.searchText) || postUserName.includes(feed.searchText);
+    })
+  }
+
   // change posts array to include only those of the chosen year
   if (feed.chosenYear) {
     posts = posts.filter((post) => {
