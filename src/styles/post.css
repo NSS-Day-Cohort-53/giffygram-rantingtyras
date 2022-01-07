@@ -85,3 +85,15 @@
     color: blue;
     text-decoration: underline;
 }
+
+#urlError {
+    display: none;
+    font-size: 0.8em;
+    color: red;
+}
+
+#urlError.visible {
+    display: block;
+    margin: 0 0 0.8em;
+}
+
