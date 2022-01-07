@@ -10,6 +10,7 @@ import {
     setCurrentUser
 } from "./data/provider.js";
 import { registerNewUser } from "./auth/Register.js";
+import { msgSubmission } from "./message/MessageForm.js";
 
 const applicationElement = document.querySelector(".giffygram");
 
@@ -33,11 +34,24 @@ renderApp();
 
 applicationElement.addEventListener("stateChanged", event => {
     renderApp();
-  })
+})
 
 
-  //this listens for clicks for registering new users
-  addEventListener("click", (event)=> {
+applicationElement.addEventListener("messageSent", event => {
+    new Promise((renderApp) => {
+        renderApp()
+    }).then(()=> {
+        document.querySelector("#msgForm").innerHTML= msgSubmission();
+        
+        const msgSentAlertElement = document.getElementById("msgSentAlert");
+        msgSentAlertElement.classList.add("visible");
+        msgSentAlertElement.setAttribute("hidden", false);
+    })
+})
+
+
+//this listens for clicks for registering new users
+applicationElement.addEventListener("click", (event) => {
     if (event.target.id === "registerButton")
     {
         document.querySelector(".giffygram").innerHTML = registerNewUser();

@@ -27,9 +27,10 @@ export const msgSubmission = () => {
                 <textarea name="msg" class="message__input" id="msgTxt" placeholder="Message to User"></textarea>
             </div>
             <div>
-                <span alert id="msgError" hidden="true">Please enter all fields</span>
                 <button class="button button__send" id="sendMsg">Send</button>
                 <button class="button button__cancel" id="cancelMsg">Cancel</button>
+                <span alert id="msgError" hidden="true">Please enter all fields</span>
+                <span alert id="msgSentAlert" hidden="true">Message sent successfully</span>
             </div>`
         return html
 }

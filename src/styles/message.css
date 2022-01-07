@@ -64,6 +64,16 @@ textarea {
 
 #msgError.visible {
     display: block;
-    margin: 0 0 0.8em;
+    margin: 0.8em 0;
 }
 
+#msgSentAlert {
+    display: none;
+    font-size: 0.8em;
+    color: green;
+}
+
+#msgSentAlert.visible {
+    display: block;
+    margin: 0.8em 0;
+}
