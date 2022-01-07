@@ -22,10 +22,12 @@ export const msgSubmission = () => {
         html += messageRecipients.join("")
         html += `</select>`
         html += `
-                <div>
+            <div>
                 <label class="label" for="msg">Message:</label>
                 <textarea name="msg" class="message__input" id="msgTxt" placeholder="Message to User"></textarea>
-                </div>
+            </div>
+            <div>
+                <span alert id="msgError" hidden="true">Please enter all fields</span>
                 <button class="button button__send" id="sendMsg">Send</button>
                 <button class="button button__cancel" id="cancelMsg">Cancel</button>
             </div>`

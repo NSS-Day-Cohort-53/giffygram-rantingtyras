@@ -2,9 +2,11 @@ import { sendMsg } from "../data/provider.js"
 
 export const MessagePackager = (sender, recipient, message, readStatus) => {
 
-    if ( recipient.length < 1 || message.length < 1)
+    if ( recipient === 0 || !message)
     {
-        window.alert("Please fill in all message fields")
+        const msgErrorElement = document.getElementById("msgError");
+        msgErrorElement.classList.add("visible");
+        msgErrorElement.setAttribute("hidden", false);
     }
     else
     {
