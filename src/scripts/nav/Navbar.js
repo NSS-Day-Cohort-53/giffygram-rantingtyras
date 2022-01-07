@@ -29,8 +29,8 @@ export const Navbar = () => {
             <div class="navigation__item navigation__logout">
                 <button id="logout" class="fakeLink">Logout</button>
             </div>
-            <button name="darkMode" type="button">Toggle Dark Mode</button>
-        </nav>
+            <button name="darkMode" id="toggle-dark" type="button"></button>
+            </nav>
     `;
 };
 
@@ -87,7 +87,7 @@ applicationElement.addEventListener("click", (event) => {
 
 document.addEventListener("click", clickEvent => {
     if (clickEvent.target.name === "darkMode"){
-    const bodyElement = document.body;
+    const bodyElement = document.body
     bodyElement.classList.toggle("dark-mode")
     }
 })

@@ -14,6 +14,16 @@
     margin: auto;
 }
 
+#toggle-dark {
+    background-image: url("https://fashionsista.co/downloadpng/png/20200904/dark-day-daynight-forecast-moon-night-sun-icon.jpg");
+    background-size: cover;
+    width: 2em;
+    height: 2em;
+    border-radius: 10px;
+    align-content: center;
+    margin-right: 3em;
+}
+
 .navigation__item {
     vertical-align: baseline;
 }
