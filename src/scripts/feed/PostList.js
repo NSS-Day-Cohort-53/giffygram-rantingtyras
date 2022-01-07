@@ -29,7 +29,7 @@ export const postFeed = () => {
       return feed.chosenYear === year;
     });
   }
-
+//   ///////////////////////////////////////////////////////////////////////////////////////////  this is where  posts for the chosen user are being chosen to be displayed
   // change posts array to include only those of the chosen user
   if (feed.chosenUser) {
     posts = posts.filter((post) => feed.chosenUser === post.userId);

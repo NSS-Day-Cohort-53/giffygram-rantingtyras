@@ -7,6 +7,7 @@ import {
     getFeed,
     setFeedChosenYear,
     getCurrentUser,
+    getFollows
 } from "../data/provider.js";
 
 export const Footer = () => {
@@ -102,7 +103,8 @@ export const Footer = () => {
                 <select id="userSelection" name="userSelection">
                     <option value="0" ${
                         feed.chosenUser === null ? `selected` : ""
-                    }>All</option></option>
+                    }>All</option>
+                    <option value="69">following</option>
                     ${users
                         .map(
                             (user) =>
@@ -135,8 +137,22 @@ applicationElement.addEventListener("change", (event) => {
         if (parseInt(event.target.value === 0)) {
             setFeedChosenUser(null);
         } else if (event.target.value !== 0) {
+            //here specify what to do if folowing is chosen
+            if (event.target.value !== 69)
+            {
             setFeedChosenYear(null);
             setFeedChosenUser(parseInt(event.target.value));
+            }
+            else 
+            {
+               const follows = getfollows();
+               follows.map((follow)=> {
+                   
+               })
+                sort through the followers
+                put all the followerids that = this usercurrent 
+                and push them into an array
+            }
         } else {
             setFeedChosenUser(parseInt(event.target.value));
         }

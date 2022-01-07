@@ -1,4 +1,4 @@
-import { getUsers, getPosts, getCurrentUser, getFeed, getMessages } from "../data/provider.js";
+import { getUsers, getPosts, getCurrentUser, getFeed, getMessages, setUserFollow } from "../data/provider.js";
 
 export const profileFeed = () => {
     const feed = getFeed()
@@ -43,8 +43,29 @@ export const profileFeed = () => {
     
     return `
     <h2>${user.name}</h2>
+    <button id="follow--button"> Follow </button>
     <br>
     <p>Total Number of Posts: ${numOfPosts}</p>
     <p>${messageList()}</p>
     `
 }
+
+document.addEventListener("click", (event)=>{
+    if (event.target.id === "follow--button")
+    {
+        const feed = getFeed()
+        const userId = parseInt(feed.UserProfileId)
+        const user = getUsers().find(user => user.id === userId)
+        console.log(user.name)
+
+
+        let personToFollowId =parseInt(user.id)
+        let currUserID = parseInt(localStorage.gg_user);
+       
+        let followObj = {
+            followedId: personToFollowId,
+            followerId: currUserID
+        }
+        setUserFollow(followObj);
+    }
+})
