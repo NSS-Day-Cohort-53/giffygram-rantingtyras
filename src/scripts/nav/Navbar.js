@@ -47,3 +47,23 @@ applicationElement.addEventListener("click", (event) => {
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
     }
 });
+
+applicationElement.addEventListener("click", (event) => {
+    if (event.target.id === "profile__close") {
+        setFeedChosenUser(null)
+        setFeedChosenYear(null)
+        setFeedDisplayMessages(false)
+        setFeedDisplayFavorites(false)
+        setFeedDisplayProfile(false)
+        setUserProfileId(null)
+        applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+    } else if (event.target.id === "directMessageIcon") {
+        //applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+    } else if (event.target.id === "notification") {
+        setFeedDisplayMessages(true);
+        applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+    } else if (event.target.id === "logout") {
+        localStorage.removeItem("gg_user");
+        applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+    }
+});
