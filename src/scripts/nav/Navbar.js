@@ -26,10 +26,10 @@ export const Navbar = () => {
             </div>
             <div class="navigation__item navigation__message" >
                 <img src="./images/fountain-pen.svg" alt="Direct message" id="directMessageIcon"/>
-                <div class="notification__count" id="notification"><span>${messageCount}</span></div>               
-            </div>
-            <div>
-            <button name="darkMode" id="toggle-dark" type="button"></button>
+                <div class="notification__count" id="notification"><span>${messageCount}</span></div> 
+                <div>
+                    <button name="darkMode" id="toggle-dark" type="button"></button>
+                </div>              
             </div>
             <div class="navigation__item navigation__logout">
                 <button id="logout" class="fakeLink">Logout</button>
@@ -69,12 +69,14 @@ applicationElement.addEventListener("click", (event) => {
             applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
         }      
     } else if (event.target.id === "hamburgerIcon") {
-        
+        const msgFormElement = applicationElement.querySelector("#msgForm");
         const navbar = applicationElement.querySelector(".navigation");
         if (navbar.className === "navigation") {
             navbar.className += " responsive";
+            msgFormElement.className += "dropdown"
         } else {
             navbar.className = "navigation";
+            msgFormElement.classList.remove("dropdown");
         }
         
     }
