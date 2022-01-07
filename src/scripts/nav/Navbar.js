@@ -26,10 +26,13 @@ export const Navbar = () => {
                 <img src="./images/fountain-pen.svg" alt="Direct message" id="directMessageIcon"/>
                 <div class="notification__count" id="notification"><span>${messageCount}</span></div>               
             </div>
+            <div>
+            <button name="darkMode" id="toggle-dark" type="button"></button>
+            </div>
             <div class="navigation__item navigation__logout">
                 <button id="logout" class="fakeLink">Logout</button>
             </div>
-        </nav>
+            </nav>
     `;
 };
 
@@ -83,3 +86,10 @@ applicationElement.addEventListener("click", (event) => {
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
     }
 });
+
+document.addEventListener("click", clickEvent => {
+    if (clickEvent.target.name === "darkMode"){
+    const bodyElement = document.body
+    bodyElement.classList.toggle("dark-mode")
+    }
+})

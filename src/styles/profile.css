@@ -6,6 +6,7 @@
     display: flex;
     flex-direction: column;
     align-content: space-around;
+    color: black;
 }
 
 #profile__close {
