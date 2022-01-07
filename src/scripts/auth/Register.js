@@ -17,6 +17,7 @@ export const registerNewUser = ()=> {
                 </fieldset>
             </form>
             <button id="createNewAcctBtn">Create New Account</button>
+            <button id="backBtn">Back</button>
             <span id="regErrorAlert" hidden="true">Please enter all fields</span>
         </div>`
 }

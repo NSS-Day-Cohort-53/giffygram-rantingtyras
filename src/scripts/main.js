@@ -55,6 +55,10 @@ applicationElement.addEventListener("click", (event) => {
     if (event.target.id === "registerButton")
     {
         document.querySelector(".giffygram").innerHTML = registerNewUser();
+    } 
+
+    if (event.target.id === "backBtn") {
+        applicationElement.innerHTML = LoginForm();
     }
 
     if  (event.target.id === "createNewAcctBtn")
