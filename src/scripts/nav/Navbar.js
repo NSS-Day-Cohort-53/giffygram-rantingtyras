@@ -1,8 +1,9 @@
-import { getMessages, getCurrentUser, setFeedChosenUser, setFeedChosenYear, setFeedDisplayFavorites, setFeedDisplayMessages, setFeedDisplayProfile, setUserProfileId, setSearchText } from "../data/provider.js";
+import { getMessages, getCurrentUser, setFeedChosenUser, setFeedChosenYear, setFeedDisplayFavorites, setFeedDisplayMessages, setFeedDisplayProfile, setUserProfileId, setSearchText, getFeed } from "../data/provider.js";
 
 export const Navbar = () => {
     let messages = getMessages();
     const currentUser = getCurrentUser();
+    const feed = getFeed();
 
     messages = messages.filter(
         (message) => message.recipientId === currentUser.id && !message.read
@@ -18,7 +19,7 @@ export const Navbar = () => {
                 Giffygram
             </div>
             <div class="navigation__item navigation__search">
-                <input type="search" id="postSearch" name="postSearch" placeholder="search posts">
+                <input type="search" id="postSearch" name="postSearch" placeholder="seach posts" value="${feed.searchText ? feed.searchText : ""}">
                 <button name="postSearchBtn" id="postSearchBtn" for="postSearch">Search</label>
             </div>
             <div class="navigation__item navigation__message" >
