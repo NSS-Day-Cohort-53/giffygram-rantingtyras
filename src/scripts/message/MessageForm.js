@@ -37,7 +37,7 @@ export const msgSubmission = () => {
 
 document.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "sendMsg") {
-         let senderId = parseInt(localStorage.gg_user);
+        let senderId = parseInt(localStorage.gg_user);
         let reciverId = parseInt(document.querySelector("#recipient").value);
         let content = (document.querySelector("#msgTxt").value);
         
@@ -48,8 +48,13 @@ document.addEventListener("click", clickEvent => {
 document.addEventListener("click", (event)=>{
     if (event.target.id === "directMessageIcon")
     {
-        //applicationElement.dispatchEvent(new CustomEvent("DisplayDmForm"))  ${msgSubmission()}
-        document.querySelector("#msgForm").innerHTML= msgSubmission();
+        const msgFormElement = document.querySelector("#msgForm");
+        if (msgFormElement.textContent === "") {
+            msgFormElement.innerHTML= msgSubmission();
+        } else {
+            msgFormElement.innerHTML= "";
+        }
+        
     }
 
     if (event.target.id === "cancelMsg")
