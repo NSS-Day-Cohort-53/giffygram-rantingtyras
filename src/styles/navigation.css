@@ -14,6 +14,14 @@
     margin: auto;
 }
 
+.navigation__nameAndLogo {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: start;
+}
+
+
 .navigation__item {
     vertical-align: baseline;
 }
@@ -78,3 +86,53 @@
     flex-direction: row;
     height: fit-content;
 }
+
+#hamburgerIcon {
+    height: 2.5em;
+}
+
+.hamburgerIcon {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .navigation > div:not(:first-child) {
+        display: none
+    }
+    .navigation div.hamburgerIcon {
+        display: block;
+        position: absolute;
+        right: 1em;
+        top: 0.5em;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .navigation.responsive {
+        display: flex;
+        flex-direction: column;  
+        align-items: flex-start;      
+    }
+    .navigation.responsive > div.hamburgerIcon {
+      position: absolute;
+      right: 1em;
+      top: 0.5em;
+    }
+    .navigation.responsive > div {
+      display: flex;
+      margin: 0 0 0.2em 0;
+    }
+    .navigation.responsive > div:first-child {
+        align-items: center;
+    }
+
+    .navigation.responsive > div.navigation__message {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navigation.responsive > div.navigation__search {
+        display: flex;
+        flex-direction: column;
+    }
+  }
